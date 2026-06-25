@@ -6,7 +6,7 @@
   "description": "file://DESCRIPTION.md",
   "changelog": "file://CHANGELOG.md",
   "icon": "file://logo.png",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "upstreamVersion": "1.9.3",
   "healthCheckPath": "/health",
   "httpPort": 8080,
@@ -17,6 +17,7 @@
     }
   },
   "memoryLimit": 2147483648,
+  "configurePath": "/docs",
   "optionalSso": true,
   "postInstallMessage": "file://POSTINSTALL.md",
   "checklist": {

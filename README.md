@@ -55,6 +55,18 @@ A request with no key, or the wrong key, returns `401`. For the OpenAI endpoint,
 served model id (the default is `BAAI/bge-small-en-v1.5`) or leave it empty; an arbitrary name is
 rejected.
 
+## No web dashboard (and how to check it works)
+
+TEI is an API server, not a web application. Opening the app domain in a browser shows a blank page,
+and that is expected, not a fault. The only browsable page is the Swagger API explorer at `/docs`
+(behind Cloudron login; the app's "Open" button points there). You verify it works by calling it:
+
+- `GET /health` returns `OK` with no key (a quick "is it alive" check).
+- `POST /v1/embeddings` with the key returns a JSON object whose `embedding` is a list of about 384
+  decimal numbers. That array of numbers is the correct, successful output: it is the embedding (your
+  text turned into coordinates), meant for a vector database to compare and search, not for a person
+  to read. A `401` instead means the key is missing or wrong.
+
 ## The API key
 
 TEI has no authentication by default: anyone who can reach it can use it. This package closes that.

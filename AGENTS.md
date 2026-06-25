@@ -66,7 +66,7 @@ TEI turns text into vectors, Qdrant stores and searches them. The two are packag
 ├── start.sh                   # entrypoint: prepare /app/data, generate the key, exec the router
 ├── CloudronManifest.json      # metadata, port, addons, healthCheckPath
 ├── CloudronVersions.json      # community publishing channel
-├── logo.png                   # 512x512 icon (community mark, not HF branding)
+├── logo.png                   # 512x512 icon (the official Hugging Face mark; logo-source.svg is the source)
 ├── .dockerignore              # keeps secrets and repo cruft out of the build context
 ├── .gitignore                 # keeps secrets out of git
 ├── docs/
