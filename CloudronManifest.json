@@ -1,0 +1,47 @@
+{
+  "id": "io.github.orcvole.tei",
+  "title": "Text Embeddings Inference",
+  "author": "OrcVole",
+  "tagline": "Fast text embeddings and reranking server (HuggingFace TEI)",
+  "description": "file://DESCRIPTION.md",
+  "changelog": "file://CHANGELOG.md",
+  "icon": "file://logo.png",
+  "version": "1.0.0",
+  "upstreamVersion": "1.9.3",
+  "healthCheckPath": "/health",
+  "httpPort": 8080,
+  "addons": {
+    "localstorage": {},
+    "proxyAuth": {
+      "path": "/docs"
+    }
+  },
+  "memoryLimit": 2147483648,
+  "optionalSso": true,
+  "postInstallMessage": "file://POSTINSTALL.md",
+  "checklist": {
+    "apikey": {
+      "message": "Get your API key: open a Terminal for this app (the `>_` button) and run `cat /app/data/.secrets/keys.env`. Send it as `Authorization: Bearer <key>` to the embedding endpoints."
+    },
+    "model": {
+      "message": "First boot downloads the embedding model (the default, `BAAI/bge-small-en-v1.5`, is ~130 MB and ready in well under a minute). To serve a different model, set `TEI_MODEL_ID` in the app's Environment and restart."
+    }
+  },
+  "tags": [
+    "ai",
+    "embeddings",
+    "search"
+  ],
+  "mediaLinks": [
+    "https://raw.githubusercontent.com/OrcVole/TEI-Cloudron/main/screenshots/overview.png"
+  ],
+  "website": "https://github.com/OrcVole/TEI-Cloudron",
+  "documentationUrl": "https://github.com/OrcVole/TEI-Cloudron",
+  "contactEmail": "OrcVole@users.noreply.github.com",
+  "packagerName": "OrcVole",
+  "packagerUrl": "https://github.com/OrcVole/TEI-Cloudron",
+  "manifestVersion": 2,
+  "minBoxVersion": "9.1.0",
+  "dockerImage": "ghcr.io/orcvole/tei-cloudron@sha256:f36584716a2df33e2869bb2540d243976cdc6af09aee0eb07f35aa222d935434",
+  "iconUrl": "https://raw.githubusercontent.com/OrcVole/TEI-Cloudron/main/logo.png"
+}
