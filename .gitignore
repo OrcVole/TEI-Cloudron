@@ -1,0 +1,29 @@
+# Secrets and local credentials — never commit. The anonymity sweep (docs/RELEASING.md) checks
+# that none of these leaked into a tracked file before any push.
+*token*.txt
+*.token
+githubtoken.txt
+forgejotoken.txt
+.secrets/
+.env
+*.key
+.cloudron.json
+
+# Maintainer-private anonymity list (used by test/secret-scan.sh), never published.
+.anonymize-list
+
+# Editor and harness local state.
+.claude/
+
+# Local-only development and handoff docs. These carry box-specific context (the live test app
+# hostname, the private mirror) that helps the next session continue but must never be published.
+# The anonymized public record of what was verified lives in docs/PACKAGING-NOTES.md.
+STATUS.md
+RECON.md
+
+# Local build, test, and scratch artifacts.
+*.log
+scratchpad/
+tmp/
+__pycache__/
+*.pyc
