@@ -27,3 +27,7 @@ scratchpad/
 tmp/
 __pycache__/
 *.pyc
+
+# Box-specific wiring notes: the file says it is gitignored, and until 2026-08-03 it was not.
+# It names box hosts; an `add -A` would have published it.
+WIRING-NOTES.md
