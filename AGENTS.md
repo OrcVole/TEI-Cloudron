@@ -7,13 +7,13 @@ relitigate them and do not regress conformance.
 If you are an AI agent: treat the rules in "Golden rules" as hard constraints. When a request
 conflicts with them, stop and surface the conflict rather than working around it.
 
-This repository packages **Text Embeddings Inference** (https://github.com/huggingface/text-embeddings-inference,
+This repository packages **Text Embeddings Inference** (<https://github.com/huggingface/text-embeddings-inference>,
 Apache-2.0, a text embedding and reranking server written in Rust by Hugging Face) as a
 **Cloudron-conformant application**. The goals, in order: (1) it runs cleanly and securely on
 Cloudron, (2) the repository is public so others can use it, and (3) it is written to a standard
 where the Cloudron team could adopt it as an official application.
 
-It is the embedding companion to the Qdrant package (https://github.com/OrcVole/qdrant-cloudron):
+It is the embedding companion to the Qdrant package (<https://github.com/OrcVole/qdrant-cloudron>):
 TEI turns text into vectors, Qdrant stores and searches them. The two are packaged separately.
 
 ---
@@ -227,4 +227,5 @@ installable by others before any official review. See CONTRIBUTING.md.
 - [ ] No secret, personal host, email, or token in any tracked file (the anonymity sweep in
       docs/RELEASING.md).
 - [ ] Prose follows house style: no em dashes, full words, open formats.
+
 ```

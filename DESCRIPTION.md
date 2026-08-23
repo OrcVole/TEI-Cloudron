@@ -1,4 +1,4 @@
-<upstream>1.9.3</upstream>
+`<upstream>`1.9.3</upstream>
 
 Text Embeddings Inference (TEI) is a fast, open-source server for text embeddings and reranking,
 written in Rust by Hugging Face. It loads a sentence-transformer or reranker model and serves vector

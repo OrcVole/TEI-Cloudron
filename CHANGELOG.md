@@ -1,6 +1,7 @@
 # Changelog
 
 [1.0.1]
+
 - Use the official Hugging Face mark as the app icon (was a custom graphic).
 - Add `configurePath` `/docs` so the app's "Open" button goes to the interactive API docs (TEI has
   no dashboard of its own; this is the only browsable page).
@@ -9,6 +10,7 @@
 - No image change: the dockerImage digest is unchanged from 1.0.0 (icon and notes are metadata).
 
 [1.0.0]
+
 - Initial release. Packages Hugging Face Text Embeddings Inference v1.9.3 (CPU build) on
   cloudron/base:5.0.0.
 - Multi-stage Dockerfile copies the upstream binary plus its Intel MKL and OpenMP runtime onto the
