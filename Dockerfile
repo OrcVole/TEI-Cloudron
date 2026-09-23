@@ -32,11 +32,11 @@ RUN set -eux; \
 
 # --- Stage 2: the Cloudron app image -------------------------------------------------------------
 # The final stage must be this exact base so the Cloudron file manager, web terminal, and log
-# viewer work. Tag 5.0.0 resolves to this digest (Ubuntu 24.04, glibc 2.39). The upstream binary
+# viewer work. Tag 5.1.0 resolves to this digest (Ubuntu 24.04, glibc 2.39). The upstream binary
 # was built on Debian bookworm (glibc 2.36), which 2.39 satisfies (forward-compatible).
-FROM cloudron/base:5.0.0@sha256:04fd70dbd8ad6149c19de39e35718e024417c3e01dc9c6637eaf4a41ec4e596c
+FROM cloudron/base:5.1.0@sha256:1c0666c9abe9e2090d33686826d4e97769b799124573118d41e0d7485135748e
 
-# cloudron/base:5.0.0 already provides gosu, curl, openssl, ca-certificates, coreutils, and the
+# cloudron/base:5.1.0 already provides gosu, curl, openssl, ca-certificates, coreutils, and the
 # binary's standard shared libs (libstdc++6, libssl3, libcrypto, libgcc_s, libm, libc). The only
 # things not on the base are TEI's own binary and its MKL/OpenMP runtime, copied below; so no
 # apt-get install is needed.

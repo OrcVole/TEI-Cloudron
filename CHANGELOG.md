@@ -3,6 +3,8 @@
 [1.0.2]
 
 - Upstream text-embeddings-inference 1.9.3 to 1.9.4: harrier-oss-v1 model support, and bug fixes for position embeddings, DebertaV2 large-batch handling, and buffer allocation. Upstream also added ARM64, CUDA and ROCm build targets; this package remains the amd64 CPU build, unchanged in that respect.
+- Base image cloudron/base 5.0.0 to 5.1.0: the Ubuntu 24.04.4 point release, with its OS security
+  updates. Same Ubuntu 24.04 release and glibc 2.39.
 
 [1.0.1]
 
