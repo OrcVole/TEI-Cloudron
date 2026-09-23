@@ -105,6 +105,59 @@
             "creationDate": "2026-06-25T21:08:11.764Z",
             "ts": 1782421691764,
             "publishState": "published"
+        },
+        "1.0.2": {
+            "manifest": {
+                "id": "io.github.orcvole.tei",
+                "title": "Text Embeddings Inference",
+                "author": "OrcVole",
+                "tagline": "Fast text embeddings and reranking server (HuggingFace TEI)",
+                "description": "<upstream>1.9.4</upstream>\n\nText Embeddings Inference (TEI) is a fast, open-source server for text embeddings and reranking,\nwritten in Rust by Hugging Face. It loads a sentence-transformer or reranker model and serves vector\nembeddings over a simple REST API and an OpenAI-compatible `/v1/embeddings` endpoint, which makes it\na drop-in embeddings provider for retrieval-augmented generation, semantic search, and any client\nthat already speaks the OpenAI embeddings format.\n\nThis package runs TEI on Cloudron with a secure, single-domain topology:\n\n- The embedding endpoints (`/embed`, `/v1/embeddings`, `/rerank`, `/info`) are protected by an API\n  key, so programmatic clients and sibling apps authenticate with a key rather than being redirected\n  to an interactive sign-in page.\n- The liveness endpoint (`/health`) is open so Cloudron can health-check the app, and the\n  interactive API documentation (`/docs`) is placed behind Cloudron login.\n\nTEI has no authentication by default: anyone who can reach it can use it. This package closes that\ngap. It generates a strong API key on first start and injects it through the environment so it never\nappears in the process table.\n\nThe embedding model is downloaded on first boot and cached under the application data directory, so\nCloudron's backup covers it along with the generated key. The default model is `BAAI/bge-small-en-v1.5`\n(384-dimensional English embeddings, about 130 MB); a different model can be served by setting\n`TEI_MODEL_ID` in the app's environment.\n\nThis package targets amd64 Cloudron hosts: the upstream CPU build, which bundles the Intel MKL math\nruntime, is published for amd64 only.\n\nThis is a community package. It tracks upstream Text Embeddings Inference releases and keeps the\nupstream binary unmodified. Hugging Face, Text Embeddings Inference, and the names of any models are\ntrademarks of their respective owners. This package is community-maintained and is not affiliated\nwith or endorsed by Hugging Face.\n",
+                "changelog": "- Upstream text-embeddings-inference 1.9.3 to 1.9.4: harrier-oss-v1 model support, and bug fixes for position embeddings, DebertaV2 large-batch handling, and buffer allocation. Upstream also added ARM64, CUDA and ROCm build targets; this package remains the amd64 CPU build, unchanged in that respect.\n- Base image cloudron/base 5.0.0 to 5.1.0: the Ubuntu 24.04.4 point release, with its OS security\n  updates. Same Ubuntu 24.04 release and glibc 2.39.\n",
+                "icon": "file://logo.png",
+                "version": "1.0.2",
+                "upstreamVersion": "1.9.4",
+                "healthCheckPath": "/health",
+                "httpPort": 8080,
+                "addons": {
+                    "localstorage": {},
+                    "proxyAuth": {
+                        "path": "/docs"
+                    }
+                },
+                "memoryLimit": 2147483648,
+                "configurePath": "/docs",
+                "optionalSso": true,
+                "postInstallMessage": "### Text Embeddings Inference is running\n\n**There is no web page to visit.** This app is an API, not a website. If you open its domain in a\nbrowser you will see a blank page, and that is normal, not a fault. There is no dashboard or login\nscreen of its own. The only browsable page is the interactive API documentation at `/docs` (this\napp's \"Open\" button goes there), which sits behind your Cloudron login.\n\n**Get your API key.** Open this app's Terminal (the `>_` button above) and run\n`cat /app/data/.secrets/keys.env`. It prints `TEI_API_KEY`. Send it as an `Authorization: Bearer`\ntoken on every request to the embedding endpoints.\n\n**Check it is working (in plain terms).** Two quick checks:\n\n1. Liveness, no key needed: `curl $CLOUDRON-APP-ORIGIN/health` returns `OK`. If that works, the\n   server is up.\n2. A real embedding:\n   `curl $CLOUDRON-APP-ORIGIN/v1/embeddings -H \"Authorization: Bearer PASTE-KEY-HERE\" -H \"content-type: application/json\" -d '{\"input\":\"hello world\",\"model\":\"BAAI/bge-small-en-v1.5\"}'`\n\nA working response is a long list of decimal numbers, like `[0.0152, -0.0226, 0.0085, ...]` (384 of\nthem). That wall of numbers IS the correct answer: it is the \"embedding\", the meaning of your text\nturned into coordinates. It looks like gibberish to a person, and it is meant to: it is built for a\nvector database such as Qdrant to compare and search, not for people to read. If instead you get\n`401`, the key is missing or wrong. If you get numbers, it works.\n\n**Connect another Cloudron app** (OpenWebUI, AnythingLLM, n8n): in that app's settings, set the\nOpenAI-compatible embeddings base URL to $CLOUDRON-APP-ORIGIN/v1 and paste the key as the API key.\nPair it with a Qdrant app to store the vectors it produces.\n\n**Change the model.** Set `TEI_MODEL_ID` in this app's Environment to any TEI-compatible model id\nand restart. The new model downloads on the next boot and is cached under `/app/data`. The default\nmodel does embeddings only; `/rerank` needs a reranker (cross-encoder) model.\n\n**Good to know.** The memory limit is 2 GB, which suits small and medium models; raise it in\nResources for a large one. The interactive API docs are at $CLOUDRON-APP-ORIGIN/docs (behind Cloudron\nlogin). Full details and integration recipes are in the README.\n",
+                "checklist": {
+                    "apikey": {
+                        "message": "Get your API key: open a Terminal for this app (the `>_` button) and run `cat /app/data/.secrets/keys.env`. Send it as `Authorization: Bearer <key>` to the embedding endpoints."
+                    },
+                    "model": {
+                        "message": "First boot downloads the embedding model (the default, `BAAI/bge-small-en-v1.5`, is ~130 MB and ready in well under a minute). To serve a different model, set `TEI_MODEL_ID` in the app's Environment and restart."
+                    }
+                },
+                "tags": [
+                    "ai",
+                    "embeddings",
+                    "search"
+                ],
+                "mediaLinks": [
+                    "https://raw.githubusercontent.com/OrcVole/TEI-Cloudron/main/screenshots/overview.png"
+                ],
+                "website": "https://github.com/OrcVole/TEI-Cloudron",
+                "documentationUrl": "https://github.com/OrcVole/TEI-Cloudron",
+                "contactEmail": "OrcVole@users.noreply.github.com",
+                "packagerName": "OrcVole",
+                "packagerUrl": "https://github.com/OrcVole/TEI-Cloudron",
+                "manifestVersion": 2,
+                "minBoxVersion": "9.1.0",
+                "dockerImage": "ghcr.io/orcvole/tei-cloudron@sha256:b29b28c41e9ebad27af4b8c5d106de3f998a0c34bd1cb13fe66e96bf73c6b943",
+                "iconUrl": "https://raw.githubusercontent.com/OrcVole/TEI-Cloudron/main/logo.png"
+            },
+            "creationDate": "Wed, 23 Sep 2026 20:47:17 GMT",
+            "ts": 1790196437000,
+            "publishState": "published"
         }
     }
 }
