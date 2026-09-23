@@ -2,7 +2,7 @@
 
 [1.0.2]
 
-- Upstream text-embeddings-inference 1.9.3 to 1.9.4: ARM64 build support, CUDA and ROCm multi-GPU builds, harrier-oss-v1 model support, and several bug fixes for position embeddings, DebertaV2 large-batch handling, and buffer allocation.
+- Upstream text-embeddings-inference 1.9.3 to 1.9.4: harrier-oss-v1 model support, and bug fixes for position embeddings, DebertaV2 large-batch handling, and buffer allocation. Upstream also added ARM64, CUDA and ROCm build targets; this package remains the amd64 CPU build, unchanged in that respect.
 
 [1.0.1]
 
