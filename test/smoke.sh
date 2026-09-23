@@ -14,9 +14,9 @@
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 2
 ENGINE="${ENGINE:-podman}"
-IMG=tei-cloudron:smoke
+IMG="${1:-${SMOKE_IMAGE:-tei-cloudron:smoke}}"
 NAME=tei-smoke-$$
-PORT=18099
+PORT="${SMOKE_PORT:-18099}"
 DATADIR="$(mktemp -d)"
 fail=0
 note() { printf '  %-30s %s\n' "$1" "$2"; }
@@ -30,9 +30,13 @@ cleanup() {
 }
 trap cleanup EXIT
 
-echo "== build =="
-"$ENGINE" build -t "$IMG" -f Dockerfile . >/dev/null 2>&1 || { echo "BUILD FAILED"; exit 1; }
-echo "  build ok"
+if [ -z "${SMOKE_IMAGE:-}" ] && [ $# -eq 0 ]; then
+  echo "== build =="
+  "$ENGINE" build -t "$IMG" -f Dockerfile . >/dev/null 2>&1 || { echo "BUILD FAILED"; exit 1; }
+  echo "  build ok"
+else
+  echo "== skip build (SMOKE_IMAGE or image arg provided) =="
+fi
 
 echo "== run (Cloudron-style: root -> start.sh -> gosu cloudron) =="
 "$ENGINE" run -d --name "$NAME" -v "$DATADIR":/app/data:Z -p 127.0.0.1:$PORT:8080 "$IMG" >/dev/null 2>&1

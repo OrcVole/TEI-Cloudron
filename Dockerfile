@@ -11,12 +11,12 @@
 # the pinned upstream image onto cloudron/base. The image is amd64-only: there is no arm64 CPU/MKL
 # variant of text-embeddings-inference, so this package targets amd64 Cloudron hosts.
 
-ARG TEI_VERSION=1.9
+ARG TEI_VERSION=1.9.4
 
 # --- Stage 1: the official upstream CPU image, used only as a source for the binary + MKL runtime.
-# Pinned by digest (resolved 2026-06-25). Tag cpu-1.9 resolves to this digest. NOTE: the bare
+# Pinned by digest (resolved 2026-09-23). Tag cpu-1.9.4 resolves to this digest. NOTE: the bare
 # ":1.9"/":latest" tags are CUDA images; the CPU build is the "cpu-" prefixed tag.
-FROM ghcr.io/huggingface/text-embeddings-inference:cpu-1.9@sha256:ad950d30878eceb72aaf32024d26fa2b1d04a75304fa0b4776b49aa1941fea07 AS upstream
+FROM ghcr.io/huggingface/text-embeddings-inference:cpu-1.9.4@sha256:2538ea1c9640d3763b15af668039d24172d063b42337b0c27796fc2be180c78d AS upstream
 
 # Gather every runtime artifact into one tree, dereferencing symlinks (cp -L). The libiomp5.so in
 # the upstream image is a symlink to ../llvm-14/lib/libomp.so.5; -L copies the real library out as
