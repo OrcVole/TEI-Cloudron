@@ -20,14 +20,14 @@ the pin.
 ## Current pin
 
 - Upstream: `cpu-1.9`, `ghcr.io/huggingface/text-embeddings-inference:cpu-1.9@sha256:ad950d30878eceb72aaf32024d26fa2b1d04a75304fa0b4776b49aa1941fea07` (binary reports 1.9.3).
-- Base: `cloudron/base:5.0.0@sha256:04fd70dbd8ad6149c19de39e35718e024417c3e01dc9c6637eaf4a41ec4e596c`.
+- Base: `docker.io/cloudron/base:6.0.1@sha256:7b1e729960c3ca312d26e886917ba89483241bba0219ff292858e10d9d5768ee`.
 
 ## Minimum box version
 
 The package declares `minBoxVersion 9.1.0`. This is the floor of the community versions-url install
 channel, not of the software. The channel requires the `iconUrl` manifest field, and `iconUrl`
 requires box 9.1.0 (a versions-url manifest without `iconUrl` fails validation), so there is no
-8.3.0-compatible versions-url manifest. The TEI binary and `cloudron/base:5.0.0` run on Cloudron 8.3
+8.3.0-compatible versions-url manifest. The TEI binary and `cloudron/base:5.0.0` (the base before the 6.x move) run on Cloudron 8.3
 and up; to install on a box below 9.1.0, build from source on the server (`cloudron install` from a
 clone of this repository), which uses the `file://logo.png` icon and does not require `iconUrl`.
 

@@ -6,7 +6,7 @@
   "description": "file://DESCRIPTION.md",
   "changelog": "file://CHANGELOG.md",
   "icon": "file://logo.png",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "upstreamVersion": "1.9.4",
   "healthCheckPath": "/health",
   "httpPort": 8080,
@@ -43,6 +43,6 @@
   "packagerUrl": "https://github.com/OrcVole/TEI-Cloudron",
   "manifestVersion": 2,
   "minBoxVersion": "9.1.0",
-  "dockerImage": "ghcr.io/orcvole/tei-cloudron@sha256:b29b28c41e9ebad27af4b8c5d106de3f998a0c34bd1cb13fe66e96bf73c6b943",
+  "dockerImage": "ghcr.io/orcvole/tei-cloudron@sha256:b700029c6d9fa7be8991d17ec2d6b6194cd9bccd46c05edc25a634ceb2845963",
   "iconUrl": "https://raw.githubusercontent.com/OrcVole/TEI-Cloudron/main/logo.png"
 }

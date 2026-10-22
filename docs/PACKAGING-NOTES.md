@@ -6,7 +6,7 @@ says what was verified empirically versus assumed. This is the source for the fo
 ## Pinned facts
 
 - Upstream image: `ghcr.io/huggingface/text-embeddings-inference:cpu-1.9@sha256:ad950d30878eceb72aaf32024d26fa2b1d04a75304fa0b4776b49aa1941fea07`. The binary reports version `1.9.3`. **amd64 only** (the CPU build bundles Intel MKL; there is no arm64 CPU image, so the manifest list's `unknown/unknown` is only a provenance attestation, not a usable arm64 platform).
-- Base image: `cloudron/base:5.0.0@sha256:04fd70dbd8ad6149c19de39e35718e024417c3e01dc9c6637eaf4a41ec4e596c` (Ubuntu 24.04, glibc 2.39).
+- Base image: `docker.io/cloudron/base:6.0.1@sha256:7b1e729960c3ca312d26e886917ba89483241bba0219ff292858e10d9d5768ee` (Ubuntu 26.04, glibc 2.43).
 - The bare `:1.9` and `:latest` tags are CUDA images. The CPU build is the `cpu-` prefixed tag. Easy and costly to get wrong.
 - Single source of the upstream version: the `TEI_VERSION` build argument plus the pinned digest in `Dockerfile`. The manifest mirrors it in `upstreamVersion`.
 

@@ -93,7 +93,7 @@ package `version` in the manifest is our own semver and moves independently.
 | Component | Pin |
 |---|---|
 | TEI (upstream, CPU) | `cpu-1.9`, image `ghcr.io/huggingface/text-embeddings-inference:cpu-1.9@sha256:ad950d30878eceb72aaf32024d26fa2b1d04a75304fa0b4776b49aa1941fea07` (binary reports 1.9.3) |
-| Cloudron base | `cloudron/base:5.0.0@sha256:04fd70dbd8ad6149c19de39e35718e024417c3e01dc9c6637eaf4a41ec4e596c` (Ubuntu 24.04, glibc 2.39) |
+| Cloudron base | `docker.io/cloudron/base:6.0.1@sha256:7b1e729960c3ca312d26e886917ba89483241bba0219ff292858e10d9d5768ee` (Ubuntu 26.04, glibc 2.43) |
 
 The upstream CPU build is **amd64 only** (it bundles Intel MKL; there is no arm64 CPU image), so the
 package targets amd64 hosts. See docs/decisions/0002-amd64-only.md.

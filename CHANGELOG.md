@@ -1,5 +1,9 @@
 # Changelog
 
+[1.1.0]
+
+- Base image cloudron/base 5.1.0 to 6.0.1 (Ubuntu 26.04): the operating system moves to Ubuntu 26.04, with current security updates including the removal of the compromised eMudhra emSign ECC Root CA - G3 from the trusted certificates. glibc moves from 2.39 to 2.43; the upstream binary and its MKL runtime are unchanged.
+
 [1.0.2]
 
 - Upstream text-embeddings-inference 1.9.3 to 1.9.4: harrier-oss-v1 model support, and bug fixes for position embeddings, DebertaV2 large-batch handling, and buffer allocation. Upstream also added ARM64, CUDA and ROCm build targets; this package remains the amd64 CPU build, unchanged in that respect.
